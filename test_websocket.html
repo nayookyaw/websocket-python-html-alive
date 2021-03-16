@@ -14,19 +14,19 @@
                 
                 ws.onopen = function() {                    
                     // Web Socket is connected, send data using send()
-                    ws.send(JSON.stringify({"msg":"Hello froom clien"}));
+                    ws.send(JSON.stringify({"msg":"Hello froom client"}));
                     console.log("Message is sent...");
                 };
                 
                 ws.onmessage = function (evt) { 
                     var received_msg = JSON.parse(evt.data);
                     console.log("Message is received...");
-                    console.log (received_msg.msg);
+                    console.log (received_msg);
                 };
                 
-                // ws.onclose = function() {
-                //     console.log("Connection is closed..."); 
-                // };
+               //  ws.onclose = function() {
+               //      console.log("Connection is closed..."); 
+               //  };
             } else {
               
                // The browser doesn't support WebSocket
@@ -40,6 +40,7 @@
    <body>
       <div id = "websocket">
          <a href = "javascript:WebSocketTest()">Run WebSocket</a>
+         <p> See the Result at <strong>console  log</strong></p>
       </div>
       
    </body>

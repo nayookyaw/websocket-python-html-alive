@@ -6,31 +6,43 @@ import asyncio
 import websockets
 import time, json
 
-async def hello(websocket, path):
-    while True:
-        # try:
-        #     name = await websocket.recv()
-        # except Exception as e:
-        #     print (e)
+port = 8765
 
-        # print(f"< {name}")
-        # greeting = f"Hello {name}!"
-        # req = await websocket.recv()
-        # print (json.load(req))
+class initWebsocketServer:
+    def start(self):
+        start_server = websockets.serve(WebsocketServer.run, "localhost", port)
+        print ("Websocket Server is running at ", port)
 
-        greeting = "Hello from Server"
-        res = {
-            'msg' : 'connected',
-            'version' : '1.0.1'
-        }
+        asyncio.get_event_loop().run_until_complete(start_server)
+        asyncio.get_event_loop().run_forever()
 
-        await websocket.send(json.dumps(res))
+class WebsocketServer:
+    async def run(websocket, path):
+        while True:
+            # try:
+            #     name = await websocket.recv()
+            # except Exception as e:
+            #     print (e)
 
-        print("Sending to client")
-        await asyncio.sleep(1)
+            # print(f"< {name}")
+            # greeting = f"Hello {name}!"
+            # req = await websocket.recv()
+            # print (json.load(req))
+            try:
+                greeting = "Hello from Server"
+                res = {
+                    'msg' : 'connected',
+                    'version' : '1.0.1'
+                }
 
-start_server = websockets.serve(hello, "localhost", 8765)
-print ("Websocket Server is running")
+                await websocket.send(json.dumps(res))
 
-asyncio.get_event_loop().run_until_complete(start_server)
-asyncio.get_event_loop().run_forever()
+                print("Sending to client")
+                await asyncio.sleep(1)
+            except Exception as e:
+                print (e)
+                break
+
+if __name__ == '__main__':
+    initWebsocketServer = initWebsocketServer()
+    initWebsocketServer.start()
