@@ -12,7 +12,7 @@ nayookyaw.nok@gmail.com
 
 # Run
 Server run <br>
-$ python websocket-.server.py
+$ python websocket-server.py
 
 Client python run <br>
 $ python websocket-client.py
