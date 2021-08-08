@@ -1,8 +1,7 @@
 # Autor
-/* 
-Nay Oo Kyaw <br>
-nayookyaw.nok@gmail.com
-*/
+  Nay Oo Kyaw
+  nayookyaw.nok@gmail.com
+
 
 # Overview
 - This project is send msg and receive between Websocket server and client <br>
